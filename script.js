@@ -1,7 +1,7 @@
 //Setting up the gameBoard Module
 let gameBoardModule = (() => {
-  let gameBoard = [];
-  return {};
+  let gameBoard = ["X"];
+  return { gameBoard };
 })();
 
 //Setting up the displayController module
@@ -22,3 +22,22 @@ let createPlayer = (playerName, playerNumber, assignedXO) => {
   };
   return { getPlayerName, playerName, playerNumber, assignedXO };
 };
+
+//Setting up the render module for array to display on gameboard
+let renderArrayToScreenModule = (() => {
+  const gridBoxes = document.querySelectorAll(".grid-box");
+  gridBoxes[0].textContent = gameBoardModule.gameBoard;
+  console.log(
+    "show me the array as seen inside of renderArraryToScreenModeule...",
+    gameBoardModule.gameBoard
+  );
+  console.log(
+    "show me the node list of the gridBoxes as seen inside of renderArrayToScreenModule",
+    gridBoxes
+  );
+  return {};
+})();
+
+let Jay = createPlayer("Jay", 1, "X");
+let Jazz = createPlayer("Jazz", 1, "O");
+renderArrayToScreenModule;
