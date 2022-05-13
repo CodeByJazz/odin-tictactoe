@@ -11,3 +11,14 @@ let displayControllerModule = (() => {
   };
   return { testF };
 })();
+
+//Setting up the player factory function
+let createPlayer = (playerName, playerNumber, assignedXO) => {
+  let getPlayerName = () => {
+    playerName;
+    console.log(
+      `This is the name of player ${playerNumber} ... ${playerName} `
+    );
+  };
+  return { getPlayerName, playerName, playerNumber, assignedXO };
+};
