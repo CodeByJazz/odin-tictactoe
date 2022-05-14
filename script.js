@@ -26,7 +26,7 @@ let createPlayer = (playerName, playerNumber, assignedXO) => {
 //Setting up the render module for array to display on gameboard
 let renderArrayToScreenModule = (() => {
   const gridBoxes = document.querySelectorAll(".grid-box");
-  gridBoxes[0].textContent = gameBoardModule.gameBoard;
+  gridBoxes[4].textContent = gameBoardModule.gameBoard;
   console.log(
     "show me the array as seen inside of renderArraryToScreenModeule...",
     gameBoardModule.gameBoard
