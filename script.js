@@ -113,6 +113,69 @@ let displayControllerModule = (() => {
         index++;
       });
 
+      //Run local function to check for win/disable gameboard from further play/display winner on DOM
+      function checkWin(player) {
+        const horizontal = [0, 3, 6].map((i) => {
+          return [i, i + 1, i + 2];
+        });
+        const vertical = [0, 1, 2].map((i) => {
+          return [i, i + 3, i + 6];
+        });
+        const diagonal = [
+          [0, 4, 8],
+          [2, 4, 6],
+        ];
+
+        let allWins = [].concat(horizontal).concat(vertical).concat(diagonal);
+
+        let results = allWins.some((indices) => {
+          return (
+            gridBoxes[indices[0]].textContent == player &&
+            gridBoxes[indices[1]].textContent == player &&
+            gridBoxes[indices[2]].textContent == player
+          );
+        });
+        return results;
+      }
+
+      if (checkWin("X") == true) {
+        console.log(gameBoardModule.playerArray[0], " Wins!");
+        const body = document.querySelector("body");
+        const playerWinMessage = document.createElement("h1");
+        playerWinMessage.textContent =
+          gameBoardModule.playerArray[0] + " Wins!";
+        body.appendChild(playerWinMessage);
+        makeMove.forEach((makeMoves) => {
+          makeMoves.remove();
+        });
+        startGameButton.remove();
+        return;
+      } else if (checkWin("X") == true) {
+        console.log(gameBoardModule.playerArray[3], " Wins!");
+        const body = document.querySelector("body");
+        const playerWinMessage = document.createElement("h1");
+        playerWinMessage.textContent =
+          gameBoardModule.playerArray[3] + " Wins!";
+        body.appendChild(playerWinMessage);
+        makeMove.forEach((makeMoves) => {
+          makeMoves.remove();
+        });
+        startGameButton.remove();
+        return;
+      } else if (gameBoardModule.gameBoard.length == 9) {
+        console.log("Tie!");
+        const body = document.querySelector("body");
+        const playerWinMessage = document.createElement("h1");
+        playerWinMessage.textContent = "Tie!";
+        body.appendChild(playerWinMessage);
+        makeMove.forEach((makeMoves) => {
+          makeMoves.remove();
+        });
+
+        startGameButton.remove();
+        return;
+      }
+
       gameBoardModule.makePlayerMove();
     }
 
@@ -123,9 +186,11 @@ let displayControllerModule = (() => {
   const startGameButton = document.querySelector(".start-game-button");
   startGameButton.addEventListener("click", createPlayer);
 
-  // Test private function
-  // let testF = () => {
-  //   console.log("testing private function call inside of a module object...");
-  // };
-  return {};
+  //Listen for click to restart the game
+  const restartGameButton = document.querySelector(".restart-game-button");
+  restartGameButton.addEventListener("click", restartGame);
+
+  function restartGame() {
+    location.reload();
+  }
 })();

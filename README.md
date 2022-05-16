@@ -1,1 +1,1 @@
-# odin-tictactoe
+Welcome to Tic Tac Toe - a game that you can now play in your browser! The only thing required to play is your computer and an opponent. There's no need for pen and paper for this classic spin-off. This game was created using HTML5, Javascript, and CSS.

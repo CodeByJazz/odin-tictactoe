@@ -27,10 +27,24 @@ h1 {
   border: 2px inset #40a8c4;
   color: #a2d5f2;
 }
+button:hover {
+  background-color: #a2d5f2;
+}
 .game-board-button {
   background-color: #fcf8ec;
   grid-row: 2/3;
+  border-radius: 15px;
 }
 .start-game-button {
   background-color: #fcf8ec;
+  margin: 30px;
+  border-radius: 15px;
+  padding: 4px;
+}
+.restart-game-button {
+  background-color: #fcf8ec;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 15px;
+  padding: 4px;
 }
