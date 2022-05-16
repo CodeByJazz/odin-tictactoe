@@ -120,14 +120,12 @@ let displayControllerModule = (() => {
   });
 
   //Listen for click to start the game
+  const startGameButton = document.querySelector(".start-game-button");
+  startGameButton.addEventListener("click", createPlayer);
 
   // Test private function
   // let testF = () => {
   //   console.log("testing private function call inside of a module object...");
   // };
-  // return { testF };
+  return {};
 })();
-
-let Jay = createPlayer("Jay", 1, "X");
-let Jazz = createPlayer("Jazz", 1, "O");
-renderArrayToScreenModule;
