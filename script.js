@@ -1,8 +1,51 @@
+//Setting up the player factory function
+let createPlayer = () => {
+  //Loop through two times to capture the player's first name, and auto assign their number
+  for (let i=0; i<4; i++) {
+    if(gameBoardModule.playerArray.length >= 6) {
+    gameBoardModule.makePlayerMove()
+    break;
+    }
+    else if (gameBoardModule.playerArray == 0) {
+      let playerName = prompt("What is your first name?")
+
+      if (playerName == "" || playerName == null) {
+        alert("Sorry, name cannot be blank!");
+        continue;
+      }
+      let playerNumber = 1 
+      let assignedXO = "X"
+      alert("You are player 1, and your assigned letter is X!")
+      gameBoardModule.playerArray.push(playerName, playerNumber, assignedXO);
+      console.log("Show me the contents of the playerArray...", gameBoardModule.playerArray)
+      // return {playerName, playerNumber, assignedXO}
+    } else if (gameBoardModule.playerArray.length !== 0) {
+      let playerName = prompt("What is your first name, sir")
+      if (playerName == "" || playerName == null) {
+        alert("Sorry, name cannot be blank!");
+        continue;
+      }
+      let playerNumber = 2 
+      let assignedXO = "O"
+      alert("You are player 2, and your assigned letter is O!")
+      gameBoardModule.playerArray.push(playerName, playerNumber, assignedXO)
+      console.log("Show me the contents of the playerArray...", gameBoardModule.playerArray)
+      // return {playerName, playerNumber, assignedXO}
+    }
+  }
+//   let getPlayerName = () => {
+//     playerName;
+//     console.log(
+//       `This is the name of player ${playerNumber} ... ${playerName} `
+//     );
+//   };
+//   return { getPlayerName, playerName, playerNumber, assignedXO };
+};
+
 //Setting up the gameBoard Module
 let gameBoardModule = (() => {
-  let gameBoard = ["X"];
-  return { gameBoard };
-})();
+  let gameBoard = [];
+  let playerArray[];
 
 //Setting up the displayController module to control who's turn it is
 let displayControllerModule = (() => {
@@ -40,7 +83,10 @@ let displayControllerModule = (() => {
         }
         index++;
       });
+
+      gameBoardModule.makePlayerMove();
     }
+
     index++;
   });
 
@@ -50,18 +96,7 @@ let displayControllerModule = (() => {
   };
   return { testF };
 })();
-
-//Setting up the player factory function
-let createPlayer = (playerName, playerNumber, assignedXO) => {
-  let getPlayerName = () => {
-    playerName;
-    console.log(
-      `This is the name of player ${playerNumber} ... ${playerName} `
-    );
-  };
-  return { getPlayerName, playerName, playerNumber, assignedXO };
-};
-
+})();
 let Jay = createPlayer("Jay", 1, "X");
 let Jazz = createPlayer("Jazz", 1, "O");
 renderArrayToScreenModule;
